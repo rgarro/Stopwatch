@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import java.util.Locale;
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
 
 /**
  *            |    |    |
@@ -32,6 +34,7 @@ public class StopwatchActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stopwatch);
+        this.runTimer();
     }
 
     //start the stopwatch running when the start button is clicked
@@ -52,14 +55,21 @@ public class StopwatchActivity extends Activity {
 
     private void runTimer(){
         final TextView timeView = (TextView) findViewById(R.id.time_view);
-        int hours = seconds/3600;
-        int minutes = (seconds%3600)/60;
-        int secs = seconds%60;
-        String time = String.format(Locale.getDefault(),"%d:%02d",hours,minutes,secs);
-        timeView.setText(time);
-        if(this.running){
-            this.seconds ++;
-        }
+        final Handler handler = new Handler();
+        handler.post(new Runnable(){
+            @Override
+            public void run(){
+                int hours = seconds/3600;
+                int minutes = (seconds%3600)/60;
+                int secs = seconds%60;
+                String time = String.format(Locale.getDefault(),"%d:%02d",hours,minutes,secs);
+                timeView.setText(time);
+                if(this.running){
+                    this.seconds ++;
+                }
+                handler.postDelayed(this,1000);
+            }
+        });
     }
 }
 
