@@ -3,6 +3,10 @@ package com.hfad.stopwatch;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
+
+import java.util.Locale;
+
 /**
  *            |    |    |
  *           )_)  )_)  )_)
@@ -45,4 +49,17 @@ public class StopwatchActivity extends Activity {
         this.running = false;
         this.seconds = 0;
     }
+
+    private void runTimer(){
+        final TextView timeView = (TextView) findViewById(R.id.time_view);
+        int hours = seconds/3600;
+        int minutes = (seconds%3600)/60;
+        int secs = seconds%60;
+        String time = String.format(Locale.getDefault(),"%d:%02d",hours,minutes,secs);
+        timeView.setText(time);
+        if(this.running){
+            this.seconds ++;
+        }
+    }
 }
+
