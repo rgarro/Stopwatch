@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import java.util.Locale;
-import java.util.logging.Handler;
+import android.os.Handler;
 import java.util.logging.LogRecord;
 
 /**
