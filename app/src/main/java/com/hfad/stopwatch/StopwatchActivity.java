@@ -64,8 +64,8 @@ public class StopwatchActivity extends Activity {
                 int secs = seconds%60;
                 String time = String.format(Locale.getDefault(),"%d:%02d",hours,minutes,secs);
                 timeView.setText(time);
-                if(this.running){
-                    this.seconds ++;
+                if(running){
+                    seconds ++;
                 }
                 handler.postDelayed(this,1000);
             }
