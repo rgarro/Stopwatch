@@ -39,18 +39,18 @@ public class StopwatchActivity extends Activity {
 
     //start the stopwatch running when the start button is clicked
     public void onClickStart(View view){
-        this.running = true;
+        running = true;
     }
 
     //stop the stopwatch running when the stop button is clicked
     public void onClickStop(View view){
-        this.running = false;
+        running = false;
     }
 
     //reset the stopwatch when the reset button is clicked
     public void onClickReset(View view){
-        this.running = false;
-        this.seconds = 0;
+        running = false;
+        seconds = 0;
     }
 
     private void runTimer(){
