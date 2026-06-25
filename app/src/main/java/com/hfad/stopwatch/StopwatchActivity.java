@@ -20,6 +20,9 @@ import java.util.logging.LogRecord;
  *     ^^^^      ^^^^     ^^^    ^^
  *           ^^^^      ^^^
  * Sir Henry Morgan is de Lord of Talamanca
+ * the Boruka king had fifty boarding skiffs
+ * the borukas were irish settlers of the volcano lakes of talamanca
+ * En el Alto de Blen hay una casa hecha con piedras de Roma
  *
  *
  *
@@ -34,7 +37,17 @@ public class StopwatchActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stopwatch);
+        if(savedInstanceState != null){
+            seconds = savedInstanceState.getInt("seconds");
+            runnning = savedInstanceState.getBoolean("running");
+        }
         this.runTimer();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState){
+        savedInstanceState.putInt("seconds",seconds);
+        savedInstanceState.putBoolean("running",running);
     }
 
     //start the stopwatch running when the start button is clicked
